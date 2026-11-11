@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Projet de loi Égalité · Simulation parlementaire Merídio Rouen</title>
+<meta name="description" content="Projet de loi n° 781 « Égalité » de la simulation parlementaire Merídio Rouen, consultable par partie et par article.">
+<link rel="icon" type="image/svg+xml" href="logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap">
+<style id="css">
+:root{
+  --paper:#f4f5f6; --surface:#ffffff; --stone:#c6c7c9; --stone-soft:#e3e4e6; --ink:#0f2650; --muted:#596277; --line:#d6d9df;
+  --blue:#00439a; --blue-soft:#e3ecf8; --red:#e2001a; --white:#ffffff;
+  --accent:#00439a; --accent-soft:#e3ecf8; --accent-ink:#ffffff; --mark:#fde9a8; --mark-ink:#0f2650;
+  --p1:#00439a; --p2:#6a3d9a; --p3:#c4122f; --p4:#4a5468;
+  --lg-r:#be352e; --lg-b:#20448f; --lg-n:#12166b;
+  --shadow:0 1px 2px rgba(15,38,80,.06),0 8px 24px rgba(15,38,80,.07);
+  --f-display:"Montserrat",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --f-text:"Montserrat",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --f-ui:"Montserrat",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --f-label:"Montserrat",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#0a1428; --surface:#111e38; --stone:#3a4357; --stone-soft:#1a2742; --ink:#e8ecf5; --muted:#9ba6bf; --line:#263452;
+  --blue:#7aa5ec; --blue-soft:#18305a; --red:#ff5468; --white:#e8ecf5;
+  --accent:#7aa5ec; --accent-soft:#18305a; --accent-ink:#071224; --mark:#5b4a12; --mark-ink:#fff6d8;
+  --p1:#2f63b8; --p2:#7c52b0; --p3:#c8324a; --p4:#5b667d; --lg-r:#e0564d; --lg-b:#5f8ad8; --lg-n:#b4b9f2;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#0a1428; --surface:#111e38; --stone:#3a4357; --stone-soft:#1a2742; --ink:#e8ecf5; --muted:#9ba6bf; --line:#263452;
+  --blue:#7aa5ec; --blue-soft:#18305a; --red:#ff5468; --white:#e8ecf5;
+  --accent:#7aa5ec; --accent-soft:#18305a; --accent-ink:#071224; --mark:#5b4a12; --mark-ink:#fff6d8;
+  --p1:#2f63b8; --p2:#7c52b0; --p3:#c8324a; --p4:#5b667d; --lg-r:#e0564d; --lg-b:#5f8ad8; --lg-n:#b4b9f2;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25); color-scheme:dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-padding-top:calc(var(--hh,180px) + 12px)}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-ui);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+button,input{font:inherit;color:inherit}
+button{cursor:pointer}
+button:disabled{cursor:default;opacity:.45}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));max-width:1120px;margin:0 auto}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* En-tête */
+header.top{position:sticky;top:0;z-index:20;background:var(--stone-soft);box-shadow:0 1px 0 var(--line);padding-top:env(safe-area-inset-top,0px)}
+header.top::after{content:"";display:block;height:5px;background:linear-gradient(90deg,var(--blue) 0 33.33%,var(--white) 33.33% 66.66%,var(--red) 66.66% 100%)}
+header.top .wrap{max-width:1240px;padding-block:14px 10px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,420px);gap:10px 28px;align-items:center}
+.brand{display:flex;gap:14px;align-items:center;min-width:0}
+.brand svg.logo{flex:none;width:58px;height:auto;display:block}
+.eyebrow{font-family:var(--f-label);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.brand h1{margin:2px 0 0;font-family:var(--f-display);font-weight:700;font-size:clamp(19px,2.2vw,26px);line-height:1.15;letter-spacing:.03em;text-transform:uppercase;color:var(--blue)}
+.brand h1 small{font-size:.5em;letter-spacing:.08em;color:var(--muted);margin-left:8px;white-space:nowrap}
+.searchbar{display:flex;gap:8px;min-width:0}
+.field{position:relative;flex:1;min-width:140px}
+.field svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
+#q{width:100%;height:42px;border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:0 36px 0 38px;font-size:15px}
+#q:focus{border-color:var(--accent);outline:none;box-shadow:0 0 0 3px var(--accent-soft)}
+#qclear{position:absolute;right:6px;top:50%;transform:translateY(-50%);border:0;background:none;width:30px;height:30px;border-radius:6px;color:var(--muted)}
+.btn{height:42px;border-radius:6px;border:1px solid var(--line);background:var(--surface);padding:0 14px;font-weight:500;white-space:nowrap;display:inline-flex;align-items:center;gap:8px;color:var(--ink)}
+.btn:hover:not(:disabled){border-color:var(--muted)}
+.btn.small{height:36px;font-size:13.5px;padding:0 12px;border-radius:5px}
+
+/* Boutons des parties et des articles */
+.navs{grid-column:1/-1;display:flex;flex-direction:column;gap:8px;min-width:0}
+.row{display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;padding:3px 3px 4px;align-items:center}
+.row .lab{display:none;flex:none;font-family:var(--f-label);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);width:64px}
+.row button{flex:none;border:1px solid var(--stone);background:var(--surface);border-radius:4px;height:36px;padding:0 12px;font-size:13.5px;color:var(--muted);display:flex;gap:8px;align-items:center}
+.row button b{font-family:var(--f-label);font-weight:600;letter-spacing:.04em;color:var(--ink)}
+.row button.pc{background:var(--pc);border-color:var(--pc);color:rgba(255,255,255,.86)}
+.row button.pc b{color:#fff}
+.row button.pc:hover{filter:brightness(1.12)}
+.row button.in{box-shadow:0 0 0 2px var(--stone-soft),0 0 0 4px var(--stone)}
+.row button[aria-pressed="true"]{box-shadow:0 0 0 2px var(--stone-soft),0 0 0 4px var(--ink)}
+.row button.plain[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:var(--accent-ink);box-shadow:inset 0 -3px 0 var(--red)}
+.row button.plain[aria-pressed="true"] b{color:var(--accent-ink)}
+.row .sep{flex:none;width:1px;height:22px;background:var(--stone);margin:0 4px}
+.row.arts button{min-width:44px;justify-content:center;padding:0 10px;font-family:var(--f-label);font-weight:600;font-size:14px;color:#fff}
+.row.arts button sup{font-size:.62em;margin-left:1px;letter-spacing:0}
+@media (min-width:601px){.row{flex-wrap:wrap;overflow:visible}}
+@media (max-width:1180px){.row button.pc span{display:none}}
+
+/* Corps */
+main.wrap{max-width:860px;padding-block:28px 64px;display:flex;flex-direction:column;gap:26px}
+.cover{background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--blue);border-radius:4px;padding:26px 28px;text-align:center;box-shadow:var(--shadow)}
+.cover .no{font-family:var(--f-display);font-weight:600;font-size:22px;letter-spacing:.06em;color:var(--muted)}
+.cover .an{font-family:var(--f-display);font-weight:700;font-size:clamp(22px,4vw,32px);letter-spacing:.06em;text-transform:uppercase;margin:6px 0 2px}
+.cover .leg{font-family:var(--f-label);font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.cover .ti{font-family:var(--f-display);font-weight:800;font-size:clamp(30px,6vw,46px);letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin:18px 0 4px;line-height:1.1}
+.cover .ti span{display:block;font-size:.55em;letter-spacing:.14em;color:var(--ink)}
+.cover .lec{font-family:var(--f-text);font-style:italic;color:var(--muted);margin:0 0 18px}
+.cover dl{display:grid;grid-template-columns:max-content minmax(0,1fr);gap:6px 16px;margin:0 auto;max-width:560px;text-align:left;padding:14px 16px;background:var(--paper);border-radius:6px;font-size:14px}
+.cover dt{font-family:var(--f-label);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding-top:2px}
+.cover dd{margin:0}
+.toc{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:20px;text-align:left}
+.toc button{border:1px solid var(--line);border-left:4px solid var(--pc);background:var(--surface);border-radius:4px;padding:10px 12px;text-align:left;display:flex;flex-direction:column;gap:2px}
+.toc button:hover{border-color:var(--pc)}
+.toc .k{font-family:var(--f-label);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--pc);font-weight:600}
+.toc .t{font-family:var(--f-text);font-weight:700;font-size:15.5px;line-height:1.3}
+.toc .c{font-size:12.5px;color:var(--muted)}
+
+.sec{display:flex;flex-direction:column;gap:18px}
+.part-h{display:flex;align-items:center;gap:14px;padding:24px 20px 14px;background:var(--stone-soft);clip-path:polygon(0 12px,50% 0,100% 12px,100% 100%,0 100%);border-bottom:3px solid var(--pc)}
+.part-h .k{display:inline-block;font-family:var(--f-label);font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:var(--pc);border-radius:3px;padding:1px 8px;font-weight:600;margin-bottom:4px}
+.part-h h2{margin:0;font-family:var(--f-display);font-weight:700;font-size:clamp(20px,3vw,25px);line-height:1.2;letter-spacing:.03em;color:var(--blue);text-wrap:balance}
+.part-h .sum{margin-left:auto;text-align:right;font-size:12.5px;color:var(--muted);white-space:nowrap}
+.part-h .sum b{display:block;font-family:var(--f-display);font-size:26px;font-weight:700;color:var(--ink);line-height:1}
+.part-h button.go{border:0;background:none;padding:0;text-align:left;color:inherit}
+.part-h button.go:hover h2{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}
+
+article.art{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:20px 24px 22px;box-shadow:var(--shadow)}
+.art-h{display:flex;align-items:flex-start;gap:14px;margin-bottom:14px}
+.badge{flex:none;display:inline-flex;align-items:center;justify-content:center;min-width:56px;height:30px;padding:0 9px;border-radius:4px 4px 2px 2px;background:var(--pc);color:#fff;font-family:var(--f-label);font-weight:600;font-size:14px;letter-spacing:.03em;box-shadow:inset 0 -2px 0 rgba(0,0,0,.18)}
+.badge sup{font-size:.65em}
+.art-h .tt{min-width:0}
+.art-h h3{margin:0;font-family:var(--f-display);font-weight:700;font-size:24px;letter-spacing:.04em;color:var(--blue);line-height:1.15}
+.art-h h3 sup{font-size:.6em}
+.art-h .obj{margin:3px 0 0;font-family:var(--f-text);font-style:italic;color:var(--muted);font-size:16px;line-height:1.4}
+.art-h a.lnk,.art-h button.lnk{margin-left:auto;flex:none;border:1px solid var(--line);background:var(--surface);border-radius:5px;height:32px;padding:0 10px;font-size:13px;color:var(--muted)}
+.art-h button.lnk:hover{border-color:var(--accent);color:var(--accent)}
+.al{display:grid;grid-template-columns:34px minmax(0,1fr);gap:0 8px;margin:0 0 12px;font-family:var(--f-text);font-size:16px;line-height:1.7;overflow-wrap:anywhere}
+.al:last-child{margin-bottom:0}
+.al .n{font-family:var(--f-label);font-weight:600;font-size:14px;color:var(--pc);padding-top:3px;text-align:right}
+.al p{margin:0}
+.al.free{grid-template-columns:minmax(0,1fr);padding-left:42px}
+.al ol{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-direction:column;gap:5px}
+.al ol li{display:grid;grid-template-columns:30px minmax(0,1fr);gap:6px;padding-left:4px}
+.al ol li i{font-style:normal;color:var(--muted);font-family:var(--f-label);font-size:14px;padding-top:3px}
+.prose{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--blue);border-radius:4px;padding:22px 26px;font-family:var(--f-text);font-size:16px;line-height:1.7;box-shadow:var(--shadow)}
+.prose p{margin:0 0 .9em}.prose p:last-child{margin:0}
+.prose h2{margin:0 0 14px;font-family:var(--f-display);font-weight:700;font-size:25px;letter-spacing:.04em;color:var(--blue)}
+.sign{text-align:center;font-family:var(--f-text);color:var(--muted);padding:6px 0}
+.sign b{display:block;font-family:var(--f-display);font-weight:700;font-size:19px;letter-spacing:.05em;color:var(--ink);margin-top:4px}
+.crumb{font-family:var(--f-label);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.crumb button{border:0;background:var(--accent-soft);color:var(--accent);border-radius:4px;padding:3px 8px;font:inherit;font-weight:600;letter-spacing:.06em}
+.pager{display:flex;gap:10px;flex-wrap:wrap;align-items:stretch}
+.pager button{flex:1;min-width:0;border:1px solid var(--line);background:var(--surface);border-radius:6px;padding:10px 14px;text-align:left;display:flex;flex-direction:column;gap:2px}
+.pager button.nx{text-align:right}
+.pager button:hover:not(:disabled){border-color:var(--accent)}
+.pager .d{font-family:var(--f-label);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.pager .t{font-family:var(--f-text);font-weight:700;font-size:15px;line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tools{display:flex;gap:8px;flex-wrap:wrap}
+.results-h{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;padding-bottom:10px;border-bottom:3px solid var(--blue)}
+.results-h h2{margin:0;font-family:var(--f-display);font-weight:700;font-size:22px;letter-spacing:.03em;color:var(--blue)}
+.results-h p{margin:0;color:var(--muted);font-size:13.5px;display:flex;gap:8px;align-items:center}
+.empty{color:var(--muted);font-size:15px}
+mark{background:var(--mark);color:var(--mark-ink);border-radius:2px;padding:0 1px}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--surface);padding:8px 14px;border-radius:8px;font-size:13.5px;z-index:50;max-width:calc(100vw - 32px)}
+
+@media (max-width:860px){
+  header.top .wrap{grid-template-columns:minmax(0,1fr)}
+  .toc{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:600px){
+  header.top{position:static}
+  html{scroll-padding-top:12px}
+  .brand svg.logo{width:42px}
+  .brand h1 small{display:block;margin:4px 0 0}
+  .searchbar .btn span{display:none}
+  .row .lab{display:none}
+  .row button.pc span{display:none}
+  .badge{display:none}
+  main.wrap{padding-block:20px 48px;gap:20px}
+  article.art{padding:16px 16px 18px}
+  .prose{padding:18px 18px}
+  .cover{padding:22px 16px}
+  .cover dl{grid-template-columns:minmax(0,1fr);gap:2px}
+  .cover dd{margin-bottom:8px}
+  .art-h{flex-wrap:wrap}
+  .art-h button.lnk{display:none}
+  .al{grid-template-columns:26px minmax(0,1fr);font-size:15.5px}
+  .al.free{padding-left:34px}
+  .part-h .sum{display:none}
+  .pager button.pv .t,.pager button.nx .t{white-space:normal}
+}
+</style>
+</head>
+<body>
+<template id="tpl"><header class="top" id="top">
+  <div class="wrap">
+    <div class="brand">
+      <svg class="logo" viewBox="0 0 811 778" fill="none" stroke-width="20" role="img" aria-label="Logo Simulation parlementaire"><circle cx="400.5" cy="365.7" r="354" style="stroke:var(--lg-r)"/><circle cx="400.0" cy="366.5" r="252.5" style="stroke:var(--lg-r)"/><circle cx="445.0" cy="411.7" r="354" style="stroke:var(--lg-b)"/><circle cx="445.4" cy="411.9" r="253.1" style="stroke:var(--lg-b)"/><circle cx="351.5" cy="427.1" r="339" style="stroke:var(--lg-n)"/><circle cx="351.3" cy="427.5" r="242.3" style="stroke:var(--lg-n)"/></svg>
+      <div style="min-width:0">
+        <div class="eyebrow">Merídio Rouen · simulation parlementaire</div>
+        <h1>Projet de loi Égalité <small>N° 781 · Première lecture</small></h1>
+      </div>
+    </div>
+    <div class="searchbar" role="search">
+      <div class="field">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <label for="q" class="sr">Rechercher dans le texte</label>
+        <input id="q" type="search" autocomplete="off" placeholder="Rechercher dans le texte">
+        <button id="qclear" type="button" aria-label="Effacer la recherche" hidden>✕</button>
+      </div>
+    </div>
+    <div class="navs">
+      <nav class="row" id="parts" aria-label="Parties du texte"></nav>
+      <nav class="row arts" id="arts" aria-label="Articles"></nav>
+    </div>
+  </div>
+</header>
+<main class="wrap" id="main" aria-live="polite"></main></template>
+<script id="app">(function(){
+"use strict";
+const tpl = document.getElementById('tpl');
+document.body.insertBefore(tpl.content.cloneNode(true), tpl);
+
+/* ---------- Le texte ----------
+   Chaque alinéa : "1° …" (numéroté), un texte simple (paragraphe sans numéro),
+   ou {n:"2°", t:"…", list:["(a) …"]} (alinéa suivi d'une énumération). */
+const DOC = {
+  numero: '781', titre: 'Égalité', lecture: 'Première lecture', depot: '24 octobre 2026',
+  transmis: ['Madame la Première ministre', 'Monsieur le ministre de l’Éducation nationale', 'Monsieur le ministre chargé de la Décentralisation et de l’Aménagement du territoire'],
+  destinataire: 'Monsieur le Président de l’Assemblée nationale',
+  signature: {date: '24/10/2026', par: 'Présidence Merídio – Rouen'},
+  motifs: [
+    'L’égalité est l’un des fondements de notre République. Pourtant, les inégalités persistent : écarts de rémunération entre les femmes et les hommes, violences sexistes, harcèlement scolaire et discriminations en tout genre, obstacles liés au handicap, difficultés d’accès aux soins médicaux, fracture numérique dans les territoires, inégalités face au logement…',
+    'Ces constats révèlent les limites de notre système actuel. Nous ne pouvons plus nous contenter de proclamer des droits sans garantir leur application effective. L’égalité ne doit pas être une promesse, mais une réalité pour toutes et tous, sur l’ensemble du territoire national.',
+    'En matière d’égalité entre les femmes et les hommes, le texte propose de renforcer la parité dans les entreprises, l’enseignement supérieur et les assemblées parlementaires, de lutter contre les écarts de rémunération injustifiés et de mieux prévenir le sexisme. Il vise également à renforcer la protection des victimes de violence. Il s’agit de passer des déclarations de principe à des obligations effectives, assorties de mécanismes de contrôle et de correction.',
+    'En matière d’égalité des chances, le projet prévoit de veiller à l’accessibilité de tous les bâtiments publics de l’État. Il entend également mieux protéger les élèves contre le harcèlement et le cyberharcèlement, en associant protection des victimes, responsabilisation des auteurs et accompagnement éducatif. Il aborde par ailleurs la question de la liberté de conscience et celle de l’accès aux droits, qui exigent un cadre clair et respectueux des principes fondamentaux de la République.',
+    'Enfin, l’égalité républicaine ne saurait dépendre du lieu de résidence. Le texte entend répondre aux difficultés d’accès aux soins par une meilleure répartition des médecins, moderniser les démarches administratives en prévenant l’exclusion numérique et réformer la gestion du logement social en France.',
+    'Ce projet porte une conviction simple : une République juste ne se contente pas de proclamer des droits. Elle se donne les moyens de les faire respecter. Sa mise en œuvre devra reposer sur des règles claires, des moyens adaptés et une évaluation effective des résultats.',
+    'Le Parlement a le choix entre la résignation face aux inégalités et la volonté de les combattre. Le Gouvernement, lui, a fait son choix. Adopter ce texte, c’est affirmer que la justice sociale, la protection des personnes et la cohésion des territoires exigent des actes.',
+    'C’est faire le choix d’une République plus juste, plus accessible et plus responsable.'
+  ],
+  parties: [
+    {n: 1, r: 'I', titre: 'De l’égalité entre les femmes et les hommes', court: 'Femmes et hommes', color: 'var(--p1)', articles: [
+      {n: 1, titre: 'Garantir la parité dans la société', al: [
+        '1° La parité entre les femmes et les hommes constitue un objectif fondamental de la République.',
+        '2° Les entreprises employant plus de cinquante salariés favorisent une représentation équilibrée des femmes et des hommes au sein de leurs effectifs et de leurs postes à responsabilité. En cas de déséquilibre injustifié et en l’absence de mesures correctrices, une sanction financière proportionnée au manquement constaté peut être prononcée à leur encontre.',
+        '3° Les établissements d’enseignement supérieur favorisent la mixité et tendent vers une représentation équilibrée des étudiants et des étudiantes, y compris dans l’accès aux formations. Lorsqu’un déséquilibre important est constaté, l’établissement met en œuvre des mesures visant à renforcer la présence du sexe sous-représenté.',
+        '4° Afin de garantir la parité au Parlement, le mode d’élection des députés et des sénateurs est réformé : les partis et groupements politiques présentent un nombre égal de candidates et de candidats.',
+        '5° Tout parti ou groupement politique qui ne respecte pas cette obligation voit son financement public réduit proportionnellement à l’écart constaté. L’objectif est d’assurer, au sein de l’Assemblée nationale et du Sénat, une représentation aussi proche que possible de 50 % de femmes et de 50 % d’hommes.'
+      ]},
+      {n: 2, titre: 'Garantir l’égale rémunération des femmes et des hommes', al: [
+        '1° À niveau de responsabilité, de qualification, d’ancienneté et de compétences équivalents, les femmes et les hommes bénéficient d’une rémunération identique au sein d’une même entreprise. Cette égalité s’applique en particulier à partir d’un certain niveau de responsabilité dans l’entreprise, fixé par décret.',
+        '2° Les entreprises employant plus de cinquante salariés publient chaque année un bilan présentant les écarts de rémunération entre les femmes et les hommes occupant des postes de responsabilité équivalents.',
+        '3° Lorsqu’un écart de rémunération injustifié est constaté, l’employeur met en œuvre les mesures nécessaires pour y remédier dans un délai maximal d’un an.'
+      ]},
+      {n: 3, titre: 'Renforcer la lutte contre le sexisme et protéger les victimes', al: [
+        '1° Constitue un délit autonome de réitération sexiste le fait, pour une même personne, de tenir ou de reproduire, à l’encontre d’une ou plusieurs personnes, des propos, comportements, messages, gestes ou représentations manifestement sexistes, lorsque ces faits, commis à au moins trois reprises au cours d’une période de douze mois, traduisent une volonté persistante de rabaisser, d’intimider, d’humilier ou d’exclure une personne ou un groupe de personnes en raison de leur sexe. La réitération est punie de deux ans d’emprisonnement et de 30 000 euros d’amende.',
+        '2° Par dérogation aux règles ordinaires de prescription, les violences commises de manière habituelle au sein du couple se prescrivent à compter du dernier fait de violence. Lorsque la victime était placée, au moment des faits, dans une situation d’emprise, de dépendance économique, de menace ou d’isolement caractérisé ayant fait obstacle à la révélation des faits, le délai de prescription est suspendu jusqu’à la cessation de cette situation, dans la limite de cinq années supplémentaires.',
+        '3° Toute entreprise employant au moins cinquante salariés adopte un plan annuel de prévention du sexisme. Lorsqu’une enquête interne établit l’existence d’agissements sexistes répétés, l’employeur prend des mesures disciplinaires et propose à la victime un changement temporaire de poste ou de lieu de travail, sans perte de rémunération.',
+        '4° Les communes de plus de 10 000 habitants consacrent au moins 1 % de leurs dépenses annuelles d’investissement à la création, à l’acquisition ou à l’aménagement de logements destinés à l’hébergement temporaire des personnes victimes de violences au sein du couple et de leurs enfants. Ces logements bénéficient d’un régime de priorité d’attribution et sont situés dans des conditions permettant de préserver la confidentialité de l’adresse des personnes accueillies.',
+        '5° L’absence de mise en œuvre de l’obligation prévue au 4° pendant deux exercices consécutifs peut entraîner une minoration des concours financiers de l’État, dans des conditions fixées par décret en Conseil d’État.'
+      ]}
+    ]},
+    {n: 2, r: 'II', titre: 'De l’égalité des chances', court: 'Égalité des chances', color: 'var(--p2)', articles: [
+      {n: 4, titre: 'Accessibilité universelle des biens publics', al: [
+        '1° Il est créé d’une Agence nationale pour l’aménagement et l’accessibilité des bâtiments publics (ANAABP), établissement public de l’État, chargé de contrôler, d’accompagner et de valider les projets de construction et de rénovation des bâtiments publics.',
+        '2° Cette agence a pour mission de veiller à ce que tous les bâtiments appartenant à l’État, aux collectivités territoriales et aux établissements publics soient conçus ou rénovés de manière à être pleinement accessibles à l’ensemble des citoyens, quelle que soit leur situation de handicap : personnes à mobilité réduite, personnes malvoyantes ou non-voyantes, personnes sourdes ou malentendantes, personnes présentant des handicaps cognitifs ou psychiques.',
+        '3° Toute construction ou rénovation importante d’un bâtiment public devra être préalablement soumise à l’ANAABP. Aucun projet ne pourra être définitivement autorisé sans avoir reçu la validation de l’agence lorsque celle-ci est requise par la loi. L’ANAABP devra rendre sa décision dans un délai maximal de douze mois à compter de la réception d’un dossier complet.',
+        {n: '4°', t: 'L’agence pourra :', list: [
+          '(a) délivrer une validation sans réserve ;',
+          '(b) délivrer une validation assortie de prescriptions techniques ;',
+          '(c) demander au maître d’ouvrage de modifier son projet ;',
+          '(d) refuser la validation lorsque le projet ne respecte pas la législation en matière d’accessibilité ou de normes de sécurité.'
+        ]},
+        '5° L’ANAABP réunira à parts égales un collège technique (architectes, ingénieurs, urbanistes) et un collège d’usagers (représentants des personnes en situation de handicap).'
+      ]},
+      {n: 5, titre: 'Condition de genre dans l’accès aux droits', al: [
+        '1° L’orientation sexuelle et l’identité de genre doivent faire l’objet d’une déclaration obligatoire dans les actes d’état civil. Toute personne peut demander, selon les procédures prévues par la loi, la modification des informations relatives à son identité, par une procédure administrative accessible et sécurisée.',
+        '2° Une personne non binaire ne peut être admise à intégrer certains emplois, comme les emplois relevant du domaine militaire ou encore de la fonction publique, en raison de l’absence d’identification à un genre déterminé.',
+        '3° Selon l’orientation sexuelle, certains droits civiques pourront faire l’objet d’une restriction. Ainsi, les allocations familiales ne peuvent être valablement perçues par un couple de même sexe.'
+      ]},
+      {n: 6, titre: 'Liberté de conscience et égalité de traitement à l’école', al: [
+        '1° Le port de signes ou de tenues manifestant une appartenance religieuse est autorisé pour les élèves dans les écoles, les collèges et les lycées publics, y compris au sein des salles de classe.',
+        '2° Cette autorisation s’applique également aux enseignants et aux personnels exerçant dans les établissements publics locaux d’enseignement.',
+        '3° Le port d’un signe ou d’une tenue manifestant une appartenance religieuse ne peut faire obstacle au bon fonctionnement de l’établissement, au suivi des enseignements ou au respect du principe d’égalité entre les élèves.'
+      ]},
+      {n: 7, titre: 'Responsabilisation des auteurs mineurs de harcèlement scolaire et de cyberharcèlement', al: [
+        '1° L’État impose à chaque établissement scolaire un protocole de signalement et de traitement du harcèlement scolaire. Tout signalement fait l’objet d’une évaluation rapide et donne lieu, lorsque les faits sont suffisamment étayés, à des mesures immédiates de protection de la victime, sans attendre l’issue d’une éventuelle procédure judiciaire.',
+        {n: '2°', t: 'Les faits de harcèlement scolaire sont répartis en trois niveaux de gravité :', list: [
+          '(a) Niveau I : humiliations, insultes, actes répétés d’exclusion ;',
+          '(b) Niveau II : menaces, cyberharcèlement organisé, campagnes publiques d’humiliation, actes répétés portant gravement atteinte à la dignité de la victime ;',
+          '(c) Niveau III : violences physiques graves, racket, menaces de mort, diffusion non consentie de contenus intimes, actes de harcèlement ayant entraîné une atteinte particulièrement grave à l’intégrité physique ou psychologique de la victime.'
+        ]},
+        'Lorsque des faits de niveau II répétés ou de niveau III sont établis, l’autorité judiciaire peut ordonner, après une procédure contradictoire, le retrait temporaire de l’auteur de son établissement, pour une durée maximale de trois mois renouvelable une fois. L’enseignement demeure obligatoire et un dispositif de suivi psycho-éducatif est mis en place. La mesure ne peut être prononcée que si elle est nécessaire à la protection des victimes et proportionnée à la gravité des faits avérés.',
+        '3° Lorsqu’un mineur est reconnu coupable de cyberharcèlement par décision définitive, le juge peut ordonner la suspension temporaire de son accès aux réseaux sociaux, pour une durée maximale d’un an, renouvelable en cas de récidive.',
+        '4° Est passible de poursuites pénales le parent qui, ayant eu connaissance de faits graves ou répétés de harcèlement scolaire commis par son enfant mineur, s’abstient délibérément et sans motif légitime d’intervenir alors qu’il dispose des moyens pour le faire, et contribue ainsi à la poursuite des agissements. Ce délit est puni d’une peine maximale d’un an d’emprisonnement et de 15 000 euros d’amende, portée à deux ans d’emprisonnement et de 30 000 euros d’amende en cas de récidive. La seule qualité de parent ou la seule commission d’une infraction par l’enfant ne saurait suffire à engager cette responsabilité.',
+        '5° Tout mineur reconnu coupable de harcèlement scolaire peut être soumis à un programme obligatoire de responsabilisation comprenant un accompagnement éducatif, des actions de prévention de la récidive et, lorsque cela est approprié, des mesures de réparation. Les parents peuvent être tenus de participer à un accompagnement parental ordonné par l’autorité compétente.'
+      ]}
+    ]},
+    {n: 3, r: 'III', titre: 'De l’égalité entre les territoires', court: 'Territoires', color: 'var(--p3)', articles: [
+      {n: 8, titre: 'Garantir l’accès aux soins médicaux sur l’ensemble du territoire', al: [
+        '1° Afin de garantir l’égal accès aux soins sur l’ensemble du territoire, le directeur général de l’agence régionale de santé détermine, tous les 2 ans, les zones caractérisées par une offre de soins insuffisante ou par des difficultés dans l’accès aux soins, conformément à l’article L1434-4 Code de la santé publique.',
+        '2° Tout médecin débutant une activité libérale pour la première fois est tenu d’exercer, pendant une durée minimale de dix ans, dans une zone d’intervention prioritaire lorsque les besoins en offre de soins constatés par l’agence régionale de santé le justifient. L’affectation des médecins concernés est organisée par l’agence régionale de santé compétente, en tenant compte des besoins médicaux des territoires, de la spécialité du médecin ainsi que, dans la mesure du possible, de ses préférences géographiques et de sa situation personnelle et familiale.',
+        '3° Les modalités d’application du présent article, notamment les conditions d’affectation des médecins, les dérogations pouvant être accordées pour des motifs médicaux, familiaux ou personnels ainsi que les modalités d’attribution des aides, sont déterminées par décret en Conseil d’État.'
+      ]},
+      {n: 9, titre: 'Garantir l’accès de tous aux services publics numériques', al: [
+        '1° L’article vise à moderniser les relations entre les citoyens et l’administration en faisant de la voie numérique le mode principal pour réaliser les différentes démarches en ligne.',
+        '2° À compter de l’entrée en vigueur de la loi, les administrations de l’État, les collectivités territoriales et les établissements publics devront proposer leurs principales démarches administratives sous forme numérique. Les formulaires papier seront progressivement supprimés pour les démarches pouvant être intégralement réalisées en ligne.',
+        '3° La suppression des démarches papier s’accompagne de la création d’un droit d’accès effectif aux services administratifs numériques. L’État aura pour obligation de garantir que les services publics en ligne soient accessibles au plus grand nombre, y compris aux personnes en situation de handicap, aux personnes âgées et aux personnes rencontrant des difficultés avec les outils numériques.',
+        'Les plateformes administratives devront respecter des exigences renforcées en matière d’accessibilité, de simplicité d’utilisation, de compatibilité avec les technologies d’assistance et de protection des données personnelles.',
+        '4° Afin que la dématérialisation ne crée pas une nouvelle forme d’exclusion, l’article prévoit la mise en place d’un réseau de points d’accès publics aux services numériques. Ces espaces permettront aux personnes ne disposant pas d’un équipement informatique ou d’une connexion Internet suffisante d’accéder gratuitement aux services administratifs en ligne. Un accompagnement des usagers sera prévu grâce aux agents présents sur place.'
+      ]},
+      {n: 10, titre: 'Privatisation de la charge de la construction des logements H.L.M.', al: [
+        '1° Les dispositions relatives aux obligations quantitatives de production de logements sociaux prévues par l’article 55 de la loi n° 2000-1208 du 13 décembre 2000 (SRU) relative à la solidarité et au renouvellement urbains sont abrogées.',
+        '2° Les communes disposent d’une pleine liberté dans la détermination de leur politique locale du logement, sous réserve du respect des objectifs généraux de construction, de salubrité et de mixité urbaine fixés par la loi.',
+        '3° Les organismes d’habitations à loyer modéré peuvent être transformés en sociétés de droit privé dans les conditions fixées par décret en Conseil d’État. Leur capital peut être ouvert à des investisseurs privés, sous réserve du maintien de conventions garantissant l’accès au logement des ménages répondant aux conditions de ressources fixées par la loi.',
+        '4° La gestion des logements sociaux est soumise aux principes de performance, de transparence et de responsabilité financière. Les organismes gestionnaires peuvent librement conclure des partenariats avec des opérateurs privés et procéder à la cession de logements, sous réserve de préserver une offre suffisante de logements à loyers maîtrisés dans les territoires où les besoins sont établis.',
+        '5° Le maire, en sa qualité d’autorité chargée de la tranquillité et de la sécurité publiques, peut demander l’engagement prioritaire d’une procédure de résiliation du bail ou de récupération du logement lorsqu’un occupant ou un membre de son foyer se rend de manière répétée responsable de troubles graves ou de faits portant atteinte à la sécurité, à la tranquillité ou à l’intégrité des autres occupants.',
+        '6° En cas de troubles graves et répétés, constatés par des décisions de justice, des procès-verbaux ou des rapports des autorités compétentes, le bailleur social est tenu d’engager, dans un délai fixé par décret, une procédure pouvant conduire à la résiliation du bail et à l’expulsion de l’occupant, dans le respect des droits de la défense et des compétences de l’autorité judiciaire.',
+        '7° Les logements sociaux libérés à la suite d’une procédure de résiliation peuvent être de nouveau attribués selon des critères prenant notamment en compte les ressources du demandeur, la composition du ménage, son activité professionnelle et son respect des obligations locatives.',
+        '8° Les dispositions du présent article sont applicables dans les conditions prévues par décret en Conseil d’État.'
+      ]}
+    ]},
+    {n: 4, r: 'IV', titre: 'De la mise en application', court: 'Mise en application', color: 'var(--p4)', articles: [
+      {n: 11, titre: 'Modalités d’application', al: [
+        '1° La présente loi entre en vigueur six mois après sa publication au Journal officiel de la République française.',
+        '2° Le Gouvernement prend, dans ce délai, l’ensemble des décrets et arrêtés nécessaires à son application. Le respect et le contrôle de son exécution sont assurés par la Première ministre et, chacun en ce qui le concerne, par le ministre de l’Éducation nationale et le ministre chargé de la Décentralisation et de l’aménagement du territoire.'
+      ]}
+    ]}
+  ]
+};
+
+/* ---------- Outils ---------- */
+const $ = s => document.querySelector(s);
+const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fold = s => String(s || '').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().replace(/[’']/g,"'");
+const ARTS = [];
+DOC.parties.forEach(p => p.articles.forEach(a => { a.part = p; ARTS.push(a); }));
+const artLabel = (a, html) => a.n === 1 ? (html ? '1<sup>er</sup>' : '1er') : String(a.n);
+const plural = (n, w) => n + ' ' + w + (n > 1 ? 's' : '');
+
+/* Alinéas normalisés : {n, t, list} */
+function parseAl(x){
+  if (typeof x === 'object') return {n: x.n, t: x.t, list: x.list || []};
+  const m = x.match(/^(\d+°)\s+([\s\S]*)$/);
+  return m ? {n: m[1], t: m[2], list: []} : {n: '', t: x, list: []};
+}
+ARTS.forEach(a => {
+  a.als = a.al.map(parseAl);
+  a.plain = a.als.map(x => (x.n ? x.n + ' ' : '') + x.t + (x.list.length ? '\n' + x.list.map(l => '   ' + l).join('\n') : '')).join('\n\n');
+  a.f = fold('article ' + a.n + ' ' + a.titre + '\n' + a.plain);
+});
+const MOTIFS_F = fold(DOC.motifs.join('\n'));
+
+/* ---------- État / navigation ---------- */
+let view = 'all', rx = null;
+function parseHash(h){
+  h = (h || '').replace(/^#/, '');
+  let m;
+  if ((m = h.match(/^article-(\d+)$/)) && ARTS.find(a => a.n === +m[1])) return 'a' + m[1];
+  if ((m = h.match(/^partie-(\d)$/)) && DOC.parties.find(p => p.n === +m[1])) return 'p' + m[1];
+  if (h === 'expose-des-motifs') return 'motifs';
+  return 'all';
+}
+const hashOf = v => v === 'motifs' ? '#expose-des-motifs' : v[0] === 'a' ? '#article-' + v.slice(1) : v[0] === 'p' ? '#partie-' + v.slice(1) : '';
+function go(v, opts){
+  view = v; clearSearch();
+  try { history.replaceState(null, '', hashOf(v) || (location.pathname + location.search)); } catch (e) {}
+  render();
+  if (!opts || !opts.keepScroll) window.scrollTo({top: 0});
+  const pressed = document.querySelector('#arts [aria-pressed="true"]');
+  if (pressed) pressed.scrollIntoView({block: 'nearest', inline: 'nearest'});
+}
+window.addEventListener('hashchange', () => { const v = parseHash(location.hash); if (v !== view) go(v); });
+
+/* ---------- Boutons ---------- */
+function renderNav(){
+  const cp = view[0] === 'p' ? +view.slice(1) : null;
+  const ca = view[0] === 'a' ? ARTS.find(a => a.n === +view.slice(1)) : null;
+  $('#parts').innerHTML = `<span class="lab">Parties</span>` +
+    `<button type="button" class="plain" data-v="all" aria-pressed="${view === 'all'}"><b>Texte intégral</b></button>` +
+    `<button type="button" class="plain" data-v="motifs" aria-pressed="${view === 'motifs'}"><b>Exposé des motifs</b></button><span class="sep"></span>` +
+    DOC.parties.map(p => `<button type="button" class="pc${ca && ca.part === p ? ' in' : ''}" style="--pc:${p.color}" data-v="p${p.n}" aria-pressed="${cp === p.n}" title="Partie ${p.r} : ${esc(p.titre)}"><b>Partie ${p.r}</b><span>${esc(p.court)}</span></button>`).join('');
+  $('#arts').innerHTML = `<span class="lab">Articles</span>` + DOC.parties.map((p, i) =>
+    (i ? '<span class="sep"></span>' : '') + p.articles.map(a => `<button type="button" class="pc${cp === p.n ? ' in' : ''}" style="--pc:${p.color}" data-v="a${a.n}" aria-pressed="${ca === a}" title="Article ${artLabel(a)} : ${esc(a.titre)}" aria-label="Article ${artLabel(a)}">${artLabel(a, true)}</button>`).join('')).join('');
+}
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-v]'); if (b) { go(b.dataset.v); return; }
+  const c = e.target.closest('[data-copy]'); if (c) { const a = ARTS.find(x => x.n === +c.dataset.copy); if (a) copyText(artText(a)); return; }
+  if (e.target.closest('[data-clear]')) { clearSearch(); render(); }
+});
+
+/* ---------- Rendu ---------- */
+const hl = s => { s = esc(s); return rx ? s.replace(rx, '<mark>$1</mark>') : s; };
+function artHTML(a, withLink){
+  const p = a.part;
+  let h = `<article class="art" id="article-${a.n}" style="--pc:${p.color}"><div class="art-h"><span class="badge">Art. ${artLabel(a, true)}</span><div class="tt"><h3>Article ${artLabel(a, true)}</h3><p class="obj">${hl(a.titre)}</p></div>` +
+    (withLink ? `<button type="button" class="lnk" data-v="a${a.n}">Ouvrir seul</button>` : '') + `</div>`;
+  for (const x of a.als) {
+    h += x.n ? `<div class="al"><span class="n">${x.n}</span><div><p>${hl(x.t)}</p>` : `<div class="al free"><div><p>${hl(x.t)}</p>`;
+    if (x.list.length) h += '<ol>' + x.list.map(l => { const m = l.match(/^(\([a-z]\))\s*(.*)$/); return m ? `<li><i>${m[1]}</i><span>${hl(m[2])}</span></li>` : `<li><i></i><span>${hl(l)}</span></li>`; }).join('') + '</ol>';
+    h += '</div></div>';
+  }
+  return h + '</article>';
+}
+function partHead(p, clickable){
+  const n = p.articles.length;
+  const first = p.articles[0], last = p.articles[n - 1];
+  const inner = `<span class="k">Partie ${p.r}</span><h2>${esc(p.titre)}</h2>`;
+  return `<div class="part-h" style="--pc:${p.color}">${clickable ? `<button type="button" class="go" data-v="p${p.n}">${inner}</button>` : `<div>${inner}</div>`}<div class="sum"><b>${n}</b>${n > 1 ? 'articles' : 'article'} · ${n > 1 ? 'art. ' + artLabel(first, true) + ' à ' + artLabel(last, true) : 'art. ' + artLabel(first, true)}</div></div>`;
+}
+function motifsHTML(){ return `<section class="prose" id="expose-des-motifs"><h2>Exposé des motifs</h2>${DOC.motifs.map(t => `<p>${hl(t)}</p>`).join('')}</section>`; }
+function coverHTML(){
+  return `<section class="cover"><div class="no">N° ${DOC.numero}</div><div class="an">Assemblée nationale</div><div class="leg">Constitution du 4 octobre 1958 · Dix-septième législature</div>
+    <div class="ti"><span>Projet de loi</span>${esc(DOC.titre)}</div><p class="lec">${esc(DOC.lecture)}</p>
+    <dl><dt>Enregistré le</dt><dd>${esc(DOC.depot)}, à la présidence de l’Assemblée nationale</dd><dt>Transmis par</dt><dd>${DOC.transmis.map(esc).join('<br>')}</dd><dt>À</dt><dd>${esc(DOC.destinataire)}</dd></dl></section>`;
+}
+function tocHTML(){
+  return `<div class="toc" style="margin-top:0">${DOC.parties.map(p => `<button type="button" style="--pc:${p.color}" data-v="p${p.n}"><span class="k">Partie ${p.r}</span><span class="t">${esc(p.titre)}</span><span class="c">${p.articles.length > 1 ? 'Articles ' + artLabel(p.articles[0], true) + ' à ' + p.articles[p.articles.length - 1].n : 'Article ' + p.articles[0].n}</span></button>`).join('')}</div>`;
+}
+const signHTML = () => `<p class="sign">Fait le ${esc(DOC.signature.date)}<b>${esc(DOC.signature.par)}</b></p>`;
+function pager(prev, next){
+  const btn = (x, cls, dir) => x ? `<button type="button" class="${cls}" data-v="${x.v}"><span class="d">${dir}</span><span class="t">${x.t}</span></button>` : `<button type="button" class="${cls}" disabled><span class="d">${dir}</span><span class="t">—</span></button>`;
+  return `<div class="pager">${btn(prev, 'pv', '← Précédent')}${btn(next, 'nx', 'Suivant →')}</div>`;
+}
+function render(){
+  renderNav();
+  if ($('#q').value.trim()) { runSearch(); return; }
+  rx = null;
+  let h = '';
+  if (view === 'all') {
+    h += coverHTML() + motifsHTML() + tocHTML();
+    for (const p of DOC.parties) h += `<section class="sec" id="partie-${p.n}">${partHead(p, true)}${p.articles.map(a => artHTML(a, true)).join('')}</section>`;
+    h += signHTML();
+  } else if (view === 'motifs') {
+    h += motifsHTML() + pager(null, {v: 'p1', t: 'Partie I · ' + esc(DOC.parties[0].court)});
+  } else if (view[0] === 'p') {
+    const i = DOC.parties.findIndex(p => p.n === +view.slice(1)), p = DOC.parties[i];
+    const pv = DOC.parties[i - 1], nx = DOC.parties[i + 1];
+    h += `<section class="sec">${partHead(p, false)}${p.articles.map(a => artHTML(a, true)).join('')}</section>`;
+    h += pager(pv ? {v: 'p' + pv.n, t: 'Partie ' + pv.r + ' · ' + esc(pv.court)} : {v: 'motifs', t: 'Exposé des motifs'}, nx ? {v: 'p' + nx.n, t: 'Partie ' + nx.r + ' · ' + esc(nx.court)} : null);
+  } else {
+    const i = ARTS.findIndex(a => a.n === +view.slice(1)), a = ARTS[i], p = a.part;
+    const pv = ARTS[i - 1], nx = ARTS[i + 1];
+    h += `<div class="crumb"><button type="button" data-v="p${p.n}">Partie ${p.r}</button><span>${esc(p.titre)}</span></div>`;
+    h += artHTML(a, false);
+    h += `<div class="tools"><button type="button" class="btn small" data-copy="${a.n}">Copier l’article</button><button type="button" class="btn small" data-v="p${p.n}">Toute la partie ${p.r}</button></div>`;
+    h += pager(pv ? {v: 'a' + pv.n, t: 'Art. ' + artLabel(pv, true) + ' · ' + esc(pv.titre)} : null, nx ? {v: 'a' + nx.n, t: 'Art. ' + artLabel(nx, true) + ' · ' + esc(nx.titre)} : null);
+  }
+  $('#main').innerHTML = h;
+}
+
+/* ---------- Recherche ---------- */
+let qTimer;
+function clearSearch(){ $('#q').value = ''; $('#qclear').hidden = true; rx = null; }
+function runSearch(){
+  const q = $('#q').value.trim(); $('#qclear').hidden = !q;
+  if (!q) { render(); return; }
+  const fq = fold(q).replace(/\s+/g, ' ');
+  const m = fq.match(/^(?:art(?:icle)?\.?\s*)?(\d{1,2})(?:er)?$/);
+  if (m && ARTS.find(a => a.n === +m[1])) { const a = ARTS.find(x => x.n === +m[1]); $('#main').innerHTML = `<div class="results-h"><h2>Article ${artLabel(a, true)}</h2><p><button class="btn small" type="button" data-v="a${a.n}">Ouvrir l’article</button></p></div>` + artHTML(a, true); return; }
+  const ts = fq.split(/[\s']+/).filter(w => w.length > 1);
+  rx = ts.length ? new RegExp('(' + ts.map(w => w.split('').map(ch => ({a:'[aàâä]',e:'[eéèêë]',i:'[iîï]',o:'[oôöœ]',u:'[uùûü]',c:'[cç]'})[ch] || ch.replace(/[.*+?^${}()|[\]\\-]/g, '\\$&')).join('')).join('|') + ')', 'giu') : null;
+  const list = ARTS.filter(a => ts.every(w => a.f.includes(w)));
+  const inMotifs = ts.length && ts.every(w => MOTIFS_F.includes(w));
+  let h = `<div class="results-h"><h2>Recherche : « ${esc(q)} »</h2><p>${plural(list.length, 'article')}${inMotifs ? ' · exposé des motifs' : ''} <button class="btn small" type="button" data-clear>Effacer</button></p></div>`;
+  if (!list.length && !inMotifs) h += `<p class="empty">Rien ne correspond. Essayez un autre mot, ou un numéro d’article (« 7 »).</p>`;
+  h += list.map(a => artHTML(a, true)).join('');
+  if (inMotifs) h += motifsHTML();
+  $('#main').innerHTML = h;
+  renderNav();
+}
+$('#q').addEventListener('input', () => { clearTimeout(qTimer); qTimer = setTimeout(runSearch, 150); });
+$('#q').addEventListener('keydown', e => { if (e.key === 'Escape') { clearSearch(); render(); } if (e.key === 'Enter') { e.preventDefault(); clearTimeout(qTimer); runSearch(); } });
+$('#qclear').onclick = () => { clearSearch(); render(); $('#q').focus(); };
+
+/* Flèches gauche/droite : article précédent / suivant */
+document.addEventListener('keydown', e => {
+  if (['INPUT','TEXTAREA'].includes(document.activeElement.tagName) || e.altKey || e.ctrlKey || e.metaKey) return;
+  if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+  const b = document.querySelector(e.key === 'ArrowLeft' ? '.pager .pv:not(:disabled)' : '.pager .nx:not(:disabled)');
+  if (b) { e.preventDefault(); b.click(); }
+});
+
+/* ---------- Copier ---------- */
+function artText(a){ return `Projet de loi n° ${DOC.numero} — ${DOC.titre}\nPartie ${a.part.r} : ${a.part.titre}\n\nArticle ${artLabel(a)} : ${a.titre}\n\n${a.plain}`; }
+function toast(msg){ document.querySelectorAll('.toast').forEach(t => t.remove()); const t = document.createElement('div'); t.className = 'toast'; t.setAttribute('role','status'); t.textContent = msg; document.body.append(t); setTimeout(() => t.remove(), 2800); }
+function copyRaw(s, okMsg){
+  const fallback = () => { const ta = document.createElement('textarea'); ta.value = s; ta.style.position = 'fixed'; ta.style.opacity = '0'; document.body.append(ta); ta.select(); let ok = false; try { ok = document.execCommand('copy'); } catch (e) {} ta.remove(); toast(ok ? okMsg : 'Copie impossible ici'); };
+  try { navigator.clipboard.writeText(s).then(() => toast(okMsg), fallback); } catch (e) { fallback(); }
+}
+const copyText = s => copyRaw(s, 'Article copié');
+
+
+const hh = () => document.documentElement.style.setProperty('--hh', $('#top').offsetHeight + 'px');
+try { new ResizeObserver(hh).observe($('#top')); } catch (e) { window.addEventListener('resize', hh); } hh();
+
+/* ---------- Démarrage ---------- */
+view = parseHash(location.hash);
+render();
+})();
+</script>
+</body>
+</html>
